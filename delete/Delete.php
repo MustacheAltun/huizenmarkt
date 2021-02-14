@@ -1,27 +1,29 @@
 <?php
-
+//haal de id op
 $id= $_REQUEST["id"];
 
-// Create connection
+// maak de connectie
 include "../database/Database.php";
 global $conn;
 
-// sql to delete a record
+// bereidt de sql voor om te verwijderen
 $sql = "DELETE FROM huis WHERE IDhuis='$id'";
 
+// sql wordt nu uitgevoerd
 if ($conn->query($sql) === TRUE) {
 
     ?>
         <script>
-                alert("huis is gedelete");
+            //sql query gelukt
+            alert("huis is gedelete");
             location.href = '../index.php';
         </script>
     <?php
-//    header( "Location: ../index.php" );
-
 } else {
+    //sql query niet gelukt
     echo "Error deleting record: " . $conn->error;
 }
 
+//database close
 $conn->close();
 ?>

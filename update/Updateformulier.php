@@ -3,22 +3,32 @@
 <head></head>
 <body>
 <?php
+//implimenteer navigatiebar
 include "../navigation.php";
-// Create connection
+
+// implimenteer database connectie
 include "../database/Database.php";
 global $conn;
 $id= $_REQUEST["id"];
 
+//haal de gegevens op
 $sql = "SELECT * FROM huis LEFT JOIN (status, woonwijk)
                  ON (status.IDstatus = huis.status_IDstatus AND woonwijk.IDwoonwijk = huis.woonwijk_idwoonwijk) where IDhuis = $id";
 
+//bereid de query voor
 $result = $conn->query($sql);
 ?>
+
+<!--zet alle gegevens in de formulier met een formulier-->
 <div class="form-style-5">
     <form method="post" action="updatecode.php">
-        <?php $row = mysqli_fetch_array($result);
+        <?php
+        // execute de query
+        $row = mysqli_fetch_array($result);
+
+        //haal de telefoonnummer op en trim het zonder +316
         $telefoonnummer = $row["telefoonnummer"];
-        $restphonenumber = substr("$telefoonnummer", 8, 9);  // returns "cde"
+        $restphonenumber = substr("$telefoonnummer", 8, 9);  // returns 43456733 from +316 43456733
         ?>
             <fieldset>
                 <legend><span class="number">1</span> Huis informatie</legend>

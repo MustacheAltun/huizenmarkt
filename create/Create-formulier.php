@@ -4,10 +4,11 @@
     <link rel="stylesheet" href="../main.css">
 </head>
 <body>
+<!--haal de navigatiebar op-->
 <?php  include "../navigation.php";?>
+<!--formulier die de huis aanmaakt-->
 <div class="form-style-5">
 <form method="post" action="create-huis.php">
-<!--    <fieldset>-->
         <legend><span class="number">1</span> Huis informatie</legend>
         verdiepingen: <input class="numberinput" type="number" name="verdiepingen" required>
         <br/>
@@ -56,7 +57,6 @@
     <input class="numberinput" type="email" name="E-mail" required>
     <br/>
     <input type="submit" name="submit" value="Submit">
-    </fieldset>
 </form>
 </div>
 </body>
